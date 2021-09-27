@@ -5,9 +5,11 @@
   tasks:
     - name: Populate service facts
       service_facts:
-    - debug:
-      msg: Postgresql installed!
-      when: "'postgresql.service' in services"
+
+    - name:
+      debug:
+        msg: Postgresql installed!
+        when: "'postgresql.service' in services"
 
     - name: "Execute script from command"
       command: "psql {{ db_name }} -c 'SELECT * FROM example'"
