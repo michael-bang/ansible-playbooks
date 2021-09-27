@@ -1,0 +1,23 @@
+- name: Basic troubleshooting
+  hosts: all
+  gather_facts: yes
+  tasks:
+    - name: Check memory utilization
+      assert:
+        that:
+          - ansible_memory_mb.real.free > 1000
+        msg: "Less than 1000 MB of free memory."
+
+    - name: "Ensure that free space on / is greater than 10%"
+      assert:
+        that:
+          - item.size_available > item.size_total|float * 0.1
+        msg: "Disk space has reached 90% threshold"
+      when: item.mount == "/"
+      with_items: "{{ ansible_mounts }}"
+
+    - name: "Check if web service is up"
+      uri:
+        url: "https://{{ ansible_fqdn }}:9090"
+        status_code: 200
+        validate_certs: no
