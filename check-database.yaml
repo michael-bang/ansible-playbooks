@@ -12,4 +12,8 @@
       command: "psql {{ db_name }} -c 'SELECT * FROM example'"
       become_user: postgres
       register: sql_response_variable
+
+    - name: "Print output"
+      debug:
+        var: sql_response_variable
   
