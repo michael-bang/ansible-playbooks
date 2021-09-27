@@ -8,7 +8,7 @@
         name:
           - postgresql
           - postgresql-server
-        state: present"
+        state: present
 
     - name: "Install Python packages"
       pip: "name={{ item }}  state=present"
