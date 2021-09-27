@@ -8,7 +8,8 @@
         name:
           - postgresql
           - postgresql-server
-          - postgresql-dev
+          - postgresql-devel
+          - python3-devel
         state: present
 
     - name: "Install Python packages"
