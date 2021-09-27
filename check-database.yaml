@@ -9,7 +9,7 @@
     - name:
       debug:
         msg: Postgresql installed!
-        when: "'postgresql.service' in services"
+        when: postgresql.service in services
 
     - name: "Execute script from command"
       command: "psql {{ db_name }} -c 'SELECT * FROM example'"
