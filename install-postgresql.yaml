@@ -73,7 +73,7 @@
       set_fact:
         migration_sql: "{{ lookup('file', '/opt/postgresql/creation.sql') }}"
 
-    - name: "Execute script from variable"
+    - name: "Execute script from file"
       command: "psql {{ db_name }} -f '/opt/postgresql/creation.sql'"
       become_user: postgres
       register: sql_response_variable

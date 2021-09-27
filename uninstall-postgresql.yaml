@@ -1,0 +1,31 @@
+---
+- hosts: all
+  become: yes
+   
+  tasks:
+    - name: "Remove app database"
+      postgresql_db:
+        state: absent
+        name: "{{ db_name }}"
+      become: yes
+      become_user: postgres
+
+    - name: "Remove db user"
+      postgresql_user:
+        state: absent
+        name: "{{ db_user }}"
+        password: "{{ db_password }}"
+      become: yes
+      become_user: postgres
+
+    - name: "Stop and disable services"
+      service: "name={{ item }} state=stopped enabled=no"
+      with_items:
+        - postgresql
+
+    - name: "Uninstall packages"
+      dnf: 
+        name:
+          - postgresql
+          - postgresql-server
+        state: absent
