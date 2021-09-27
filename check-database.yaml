@@ -3,10 +3,11 @@
   become: yes
 
   tasks:
-    - name: "Start and enable services"
-      service: "name={{ item }} state=started enabled=yes"
-      with_items:
-        - postgresql
+    - name: Populate service facts
+      service_facts:
+    - debug:
+      msg: Postgresql installed!
+      when: "'postgresql.service' in services"
 
     - name: "Execute script from command"
       command: "psql {{ db_name }} -c 'SELECT * FROM example'"
