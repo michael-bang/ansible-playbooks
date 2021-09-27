@@ -15,5 +15,5 @@
 
     - name: "Print output"
       debug:
-        var: sql_response_variable
+        var: sql_response_variable.stdout_lines
   
