@@ -4,10 +4,11 @@
 
   pre_tasks:
     - name: "Install packages"
-      dnf: "name={{ item }} state=present"
-      with_items:
-        - postgresql
-        - postgresql-server
+      dnf: 
+        name:
+          - postgresql
+          - postgresql-server
+        state: present"
 
     - name: "Install Python packages"
       pip: "name={{ item }}  state=present"
