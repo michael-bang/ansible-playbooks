@@ -2,7 +2,7 @@
 - hosts: databases
   become: yes
 
-  pre_tasks:
+  tasks:
     - name: "Install packages"
       dnf: 
         name:
@@ -17,7 +17,7 @@
         name: psycopg2-binary
         state: present
       
-  tasks:
+  
     - name: "Find out if PostgreSQL is initialized"
       ansible.builtin.stat:
         path: "/var/lib/pgsql/data/pg_hba.conf"
