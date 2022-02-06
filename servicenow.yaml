@@ -1,0 +1,17 @@
+---
+- hosts:
+    - localhost
+  tasks:
+    - name: Install servicenow collection
+      ansible.builtin.command: ansible-galaxy collection install servicenow.itsm
+
+---
+collections:
+  - name: servicenow.itsm
+- hosts:
+    - localhost
+  tasks:
+    - name: Retrieve all incidents
+      servicenow.itsm.incident_info:
+      register: result  
+  
