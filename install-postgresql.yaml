@@ -1,5 +1,6 @@
 ---
 - hosts: localhost
+  connection: local
   tasks:
     - name: Install postgreSQL collection
       ansible.builtin.command: ansible-galaxy collection install community.postgresql
