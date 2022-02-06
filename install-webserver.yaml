@@ -19,8 +19,3 @@
     service: 
       name: firewalld 
       state: restarted
-  - name: "Check if web service is up"
-    uri:
-      url: "http://{{ ansible_fqdn }}"
-      status_code: 200
-      validate_certs: no
