@@ -10,5 +10,9 @@
   tasks:
     - name: Retrieve all incidents
       servicenow.itsm.incident_info:
+        instance:
+          host: "{{ host }}"
+          username: "{{ username }}"
+          password: "{{ password }}"
       register: result  
   
