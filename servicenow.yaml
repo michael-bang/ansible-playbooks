@@ -5,7 +5,6 @@
     - name: Install servicenow collection
       ansible.builtin.command: ansible-galaxy collection install servicenow.itsm
 
----
 collections:
   - name: servicenow.itsm
 - hosts:
