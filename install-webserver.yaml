@@ -19,3 +19,7 @@
     service: 
       name: firewalld 
       state: restarted
+  - name: Copy index test page
+    template:
+      src: "files/index.html.j2"
+      dest: "/var/www/index.html"
