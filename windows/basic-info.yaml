@@ -1,11 +1,17 @@
 ---
+- hosts:
+    - all
+  tasks:
+    - name: Install windows collection
+      ansible.builtin.command: ansible-galaxy collection install ansible.windows
+
+
 - hosts: all
   tasks:
-
   - name: Get whoami information
-    win_whoami:
+    ansible.windows.win_whoami:
   
   - name: Run basic PowerShell script
-    win_powershell:
+    ansible.windows.win_powershell:
       script: |
         echo "Hello World"
