@@ -7,5 +7,5 @@
   
   - name: Run basic PowerShell script
     win_powershell:
-    script: |
-      echo "Hello World"
+      script: |
+        echo "Hello World"
