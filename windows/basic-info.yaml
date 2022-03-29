@@ -3,4 +3,4 @@
   tasks:
 
   - name: Get whoami information
-    ansible.windows.win_whoami:
+    win_whoami:
