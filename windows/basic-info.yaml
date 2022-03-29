@@ -4,3 +4,8 @@
 
   - name: Get whoami information
     win_whoami:
+  
+  - name: Run basic PowerShell script
+    win_powershell:
+    script: |
+      echo "Hello World"
