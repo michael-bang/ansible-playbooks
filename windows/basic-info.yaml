@@ -8,3 +8,7 @@
     ansible.windows.win_powershell:
       script: |
         echo "Hello World"
+
+  - name: Get info for all installed services
+    ansible.windows.win_service_info:
+    register: service_info
