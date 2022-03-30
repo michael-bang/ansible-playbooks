@@ -12,3 +12,8 @@
   - name: Get info for all installed services
     ansible.windows.win_service_info:
     register: service_info
+
+  - name: Retrieve current lockout time
+    win_shell: net accounts | findstr -i 'duration' | %{$_ -replace ' ', ''}
+    register: current_lockout_time
+    changed_when: False 
