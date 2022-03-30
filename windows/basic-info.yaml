@@ -24,9 +24,9 @@
 
   - name: Retrieve current password length
     win_shell: net accounts | findstr -i 'Minimum' | %{$_.split(':')[1]} | %{$_ -replace ' ', ''}
-    register: current_length
+    register: current_length.stdout
     changed_when: False
   
   - name: Print current password length
     ansible.builtin.debug:
-      var: current_length
+      var: current_length.stdout
