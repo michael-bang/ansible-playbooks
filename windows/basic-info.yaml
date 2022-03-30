@@ -1,11 +1,4 @@
 ---
-- hosts:
-    - all
-  tasks:
-    - name: Install windows collection
-      ansible.builtin.command: ansible-galaxy collection install ansible.windows
-
-
 - hosts: all
   tasks:
   - name: Get whoami information
