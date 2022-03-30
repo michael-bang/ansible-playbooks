@@ -19,6 +19,6 @@
     changed_when: False 
 
   - name: Retrieve current password length
-    win_shell: net accounts | findstr -i 'Minimum' | %{$_.split(':'[1])} | %{$_ -replace ' ', ''}
+    win_shell: net accounts | findstr -i 'Minimum' | %{$_.split(':')[1]} | %{$_ -replace ' ', ''}
     register: current_length
     changed_when: False
