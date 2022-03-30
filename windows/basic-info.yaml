@@ -24,7 +24,7 @@
     changed_when: False
   
   - name: Set the maximum password age
-    win_security_policy:
+    ansible.windows.win_security_policy:
       section: System Access
       key: MaximumPasswordAge
       value: 15
