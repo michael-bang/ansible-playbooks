@@ -1,0 +1,11 @@
+---
+- hosts: all
+  tasks:
+    - name: "Get hosts file"
+      shell: cat /etc/hosts
+      register: result
+
+    - name: "hosts file to Tower Workflows"
+      set_stats:
+        data:
+          hosts_file_results:  "{{ result.stdout }}"
