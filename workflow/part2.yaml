@@ -1,12 +1,6 @@
 ---
 - hosts: localhost
   tasks:
-    - name: "Get hosts from results "
-      uri:
-        url: "{{ hosts_file_results }}"
-        return_content: true
-      register: results
-
     - name: "Output results"
       debug:
-        msg: "{{ results.content }}"
+        msg: "{{ hosts_file_results }}"
