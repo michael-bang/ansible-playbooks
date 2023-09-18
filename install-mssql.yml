@@ -13,5 +13,6 @@
     mssql_install_fts: true
     mssql_install_powershell: true
     mssql_tune_for_fua_storage: true
+    mssql_version: 2022
   roles:
     - microsoft.sql.server
