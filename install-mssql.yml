@@ -14,4 +14,4 @@
     mssql_install_powershell: true
     mssql_tune_for_fua_storage: true
   roles:
-    - microsoft.sql.server​
+    - microsoft.sql.server
