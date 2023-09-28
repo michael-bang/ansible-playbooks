@@ -2,10 +2,13 @@
 - hosts: all
   tasks:
   - name: Create ps1 file
-    local_action: ansible.builtin.command echo 'Write-Host "Hello, World!"' > /tmp/hello.ps1 
+    ansible.builtin.command: echo 'Write-Host "Hello, World!"' > /tmp/hello.ps1 
+    delegate_to: 127.0.0.1
 
   - name: Show ps1 file
-    local_action: ansible.builtin.command cat /tmp/hello.ps1 
+    ansible.builtin.command: cat /tmp/hello.ps1
+    delegate_to: 127.0.0.1 
 
   - name: Call Write-Host from powershell in Execution Environment
-    local_action: ansible.builtin.command pwsh -f /tmp/hello.ps1
+    ansible.builtin.command: pwsh -f /tmp/hello.ps1
+    delegate_to: 127.0.0.1
