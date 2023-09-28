@@ -2,8 +2,11 @@
 - hosts: all
   tasks:
   - name: Create ps1 file
-    ansible.builtin.command: echo 'Write-Host "Hello, World!"' > /tmp/hello.ps1 
-    delegate_to: 127.0.0.1
+    ansible.builtin.copy:
+      dest: "/tmp/hello.ps1"
+      content: |
+        Write-Host "Hello, World!"
+    delegate_to: 127.0.0.1 
 
   - name: Show ps1 file
     ansible.builtin.command: cat /tmp/hello.ps1
