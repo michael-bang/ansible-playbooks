@@ -4,5 +4,8 @@
   - name: Create ps1 file
     local_action: ansible.builtin.command echo 'Write-Host "Hello, World!"' > /tmp/hello.ps1 
 
+  - name: Show ps1 file
+    local_action: ansible.builtin.command cat /tmp/hello.ps1 
+
   - name: Call Write-Host from powershell in Execution Environment
     local_action: ansible.builtin.command pwsh -f /tmp/hello.ps1
