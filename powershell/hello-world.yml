@@ -1,0 +1,5 @@
+---
+- hosts: all
+  tasks:
+    - name: Call Write-Host from powershell in Execution Environment
+      local-action: ansible.builtin.command pwsh {Write-Host "Hello, World!"}
