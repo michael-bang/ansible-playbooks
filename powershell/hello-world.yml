@@ -11,6 +11,9 @@
 
   - name: Show ps1 file
     ansible.builtin.command: cat /tmp/hello.ps1
+  
+  - name: Show working directory
+    ansible.builtin.command: pwd 
 
   - name: Call Write-Host from powershell in Execution Environment
     ansible.builtin.command: pwsh -f /tmp/hello.ps1
