@@ -11,9 +11,9 @@
   - name: Show ps1 file
     ansible.builtin.command: cat /tmp/hello.ps1
     delegate_to: 127.0.0.1 
-    register: command_output
-  - debug: msg="{{command_output.stdout}}"
 
   - name: Call Write-Host from powershell in Execution Environment
     ansible.builtin.command: pwsh -f /tmp/hello.ps1
     delegate_to: 127.0.0.1
+    register: command_output
+  - debug: msg="{{command_output.stdout}}"
