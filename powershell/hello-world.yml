@@ -19,3 +19,6 @@
     ansible.builtin.command: pwsh -f hello.ps1
     register: command_output
   - debug: msg="{{command_output.stdout}}"
+
+  - name: Call Get-Host
+    ansible.builtin.command: pwsh -Command Get-Host
