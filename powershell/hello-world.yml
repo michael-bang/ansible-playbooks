@@ -3,19 +3,19 @@
   connection: local
   
   tasks:
-  - name: Create ps1 file
-    ansible.builtin.copy:
-      dest: "/tmp/hello.ps1"
-      content: |
-        Write-Host "Hello, World!"
+ # - name: Create ps1 file
+ #   ansible.builtin.copy:
+ #     dest: "/tmp/hello.ps1"
+ #     content: |
+ #       Write-Host "Hello, World!"
 
-  - name: Show ps1 file
-    ansible.builtin.command: cat /tmp/hello.ps1
+ # - name: Show ps1 file
+ #   ansible.builtin.command: cat /tmp/hello.ps1
   
   - name: Show working directory
     ansible.builtin.command: pwd 
 
   - name: Call Write-Host from powershell in Execution Environment
-    ansible.builtin.command: pwsh -f /tmp/hello.ps1
+    ansible.builtin.command: pwsh -f hello.ps1
     register: command_output
   - debug: msg="{{command_output.stdout}}"
