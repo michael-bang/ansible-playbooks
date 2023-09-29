@@ -1,24 +1,32 @@
 ---
-- hosts: localhost
-  connection: local
+- hosts: all
+  #connection: local
   
-  tasks:
- # - name: Create ps1 file
- #   ansible.builtin.copy:
- #     dest: "/tmp/hello.ps1"
- #     content: |
- #       Write-Host "Hello, World!"
-
- # - name: Show ps1 file
- #   ansible.builtin.command: cat /tmp/hello.ps1
-  
+  tasks: 
   - name: Show working directory
-    ansible.builtin.command: pwd 
+    ansible.builtin.command: pwd
+    delegate_to: 127.0.0.1 
 
   - name: Call Write-Host from powershell in Execution Environment
     ansible.builtin.command: pwsh -f hello.ps1
     register: command_output
+    delegate_to: 127.0.0.1
   - debug: msg="{{command_output.stdout}}"
 
   - name: Call Get-Host
     ansible.builtin.command: pwsh -Command Get-Host
+    delegate_to: 127.0.0.1
+  
+  - name: write hostname using jinja2
+    ansible.builtin.template:
+       src: templates/hello-server.ps1.j2
+       dest: /tmp/hello-server.ps1
+    delegate_to: 127.0.0.1
+
+  - name: Call Hello-Server ps1 from powershell in Execution Environment
+    ansible.builtin.command: pwsh -f /tmp/hello-server.ps1
+    register: command_output2
+    delegate_to: 127.0.0.1
+  - debug: msg="{{command_output2.stdout}}"
+
+  
