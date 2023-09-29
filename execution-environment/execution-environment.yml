@@ -1,0 +1,28 @@
+---
+version: 3
+
+build_arg_defaults:
+  ANSIBLE_GALAXY_CLI_COLLECTION_OPTS: "--pre"
+
+options:
+  package_manager_path: /usr/bin/microdnf
+
+dependencies:
+  galaxy: requirements.yml
+
+images:
+  base_image:
+    name: registry.redhat.io/ansible-automation-platform-24/ee-supported-rhel8:latest
+
+
+additional_build_steps:
+
+  prepend_final: |
+    RUN whoami
+    RUN cat /etc/os-release
+    RUN microdnf install -y wget libicu
+    RUN wget https://github.com/PowerShell/PowerShell/releases/download/v7.3.7/powershell-7.3.7-1.rh.x86_64.rpm -O /tmp/pshell.rpm
+    RUN rpm -ivh /tmp/pshell.rpm
+  append_final:
+    - RUN echo This is a post-install command!
+    - RUN ls -la /etc
