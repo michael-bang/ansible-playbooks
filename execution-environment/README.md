@@ -15,4 +15,5 @@ The default name for the file defining the new execution environment is executio
 The included example defines a couple of things.
 
 > package_manager_path: /usr/bin/microdnf
+
 If you build upon the default execution environments then the package manager is microdnf and you will need to tell ansible
