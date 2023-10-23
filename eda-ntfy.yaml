@@ -1,0 +1,12 @@
+---
+- hosts: localhost
+  gather_facts: true
+
+  tasks:
+    - name: "Send message to ntfy"
+      ansible.builtin.uri:
+        url: {{ ntfy_url }}
+        method: POST
+        headers:
+          Title: {{ event.resource.data.title }}
+        body: {{ event.resource.data.message }}
