@@ -8,5 +8,5 @@
         url: "{{ ntfy_url }}"
         method: POST
         headers:
-          Title: "{{ event.resource.data.title }}"
-        body: "{{ event.resource.data.message }}"
+          Title: "{{ ansible_eda.event.resource.data.title }}"
+        body: "{{ ansible_eda.event.resource.data.message }}"
