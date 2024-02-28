@@ -1,0 +1,6 @@
+plugin: kubevirt.core.kubevirt
+connections:
+- namespaces:
+  - kubevirt-gitops
+  api_key: {{ api_key }}
+  create_groups: true
