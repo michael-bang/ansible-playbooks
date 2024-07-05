@@ -11,8 +11,8 @@
     - name: Run Job on VM start
       condition:
         all:
-        - event.type == 'MODIFIED'
-        #- event.resource.status.ready == "True"
+        #- event.type == 'MODIFIED'
+        - event.resource.spec.ready == "True"
       action:
         run_job_template:
           name: modify_motd
