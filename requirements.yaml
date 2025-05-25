@@ -3,3 +3,4 @@ collections:
   - name: https://github.com/myllynen/rhel-image
     type: git
     version: master
+  - name: microsoft.sql
