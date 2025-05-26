@@ -1,8 +1,12 @@
-- name: Create a new database with name 'mydatabase'
-  community.general.mssql_db:
-    name: mydatabase
-    state: present
-    login_host: localhost
-    login_password: {{ mssql_password }}
-    login_user: {{ mssql_user }}
+---
+- hosts: all
+  become: yes
+  tasks:
+    - name: Create a new database with name 'mydatabase'
+      community.general.mssql_db:
+        name: mydatabase
+        state: present
+        login_host: localhost
+        login_password: {{ mssql_password }}
+        login_user: {{ mssql_user }}
     
