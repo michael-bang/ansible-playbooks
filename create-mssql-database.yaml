@@ -7,6 +7,6 @@
         name: mydatabase
         state: present
         login_host: localhost
-        login_password: {{ mssql_password }}
-        login_user: {{ mssql_user }}
+        login_password: "{{ mssql_password }}"
+        login_user: "{{ mssql_user }}"
     
