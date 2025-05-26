@@ -1,0 +1,11 @@
+---
+- hosts: databases
+  become: yes
+  tasks:
+    - name: Check DB connection
+      community.general.mssql_script:
+        login_user: "{{ mssql_login_user }}"
+        login_password: "{{ mssql_login_password }}"
+        login_host: "localhost"
+        db: "{{ mssql_db }}"
+        script: "SELECT 1"
