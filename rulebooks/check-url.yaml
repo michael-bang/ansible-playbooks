@@ -1,0 +1,14 @@
+---
+- name: Check webserver
+  hosts: all
+  sources:
+    - ansible.eda.url_check:
+        urls:
+          - https://blog.4bang.dk/
+        delay: 10
+  rules:
+    - name: Restart Nginx
+      condition: event.url_check.status == "down"
+      action:
+        run_playbook:
+          name: restart_nginx
