@@ -1,0 +1,6 @@
+- hosts:
+    - all
+  tasks:
+    - name: Gather system info
+      ansible.builtin.command: hostname -I
+      register: host_ip
