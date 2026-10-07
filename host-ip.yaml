@@ -7,3 +7,10 @@
           - "Inventory Name: {{ inventory_hostname }}"
           - "Actual System Hostname: {{ ansible_facts.hostname }}"
           - "System FQDN: {{ ansible_facts.fqdn }}"
+
+    - name: Send custom facts/stats to play summary or AWX
+      ansible.builtin.set_stats:
+        data:
+          system_fqdn: {{ ansible_facts.fqdn }}
+          deployment_status: "Success"
+        per_host: false  # Set to true if stats are per host instead of global
