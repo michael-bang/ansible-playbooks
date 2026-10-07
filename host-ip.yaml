@@ -1,6 +1,9 @@
 - hosts:
     - all
   tasks:
-    - name: Gather system info
-      ansible.builtin.command: hostname -I
-      register: host_ip
+    - name: Display hostnames natively
+      ansible.builtin.debug:
+        msg: 
+          - "Inventory Name: {{ inventory_hostname }}"
+          - "Actual System Hostname: {{ ansible_facts.hostname }}"
+          - "System FQDN: {{ ansible_facts.fqdn }}"
